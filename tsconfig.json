@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "paths": {
+      "@app/my-library": [
+        "libs/my-library/src"
+      ],
+      "@app/my-library/*": [
+        "libs/my-library/src/*"
+      ],
+      "@app/my-lib2": [
+        "libs/my-lib2/src"
+      ],
+      "@app/my-lib2/*": [
+        "libs/my-lib2/src/*"
+      ],
+      "@app/user-library": [
+        "libs/user-library/src"
+      ],
+      "@app/user-library/*": [
+        "libs/user-library/src/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
