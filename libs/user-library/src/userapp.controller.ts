@@ -5,7 +5,7 @@ import { UserAppService } from './userapp.service';
 export class UserAppController {
   constructor(private readonly appService: UserAppService) {}
   @Get()
-  getoptions() {
+  gethello() {
     console.log('hello');
   }
 }

@@ -3,13 +3,11 @@ import * as jwt from 'jsonwebtoken';
 import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
+import { Model, PassportLocalModel } from 'mongoose';
 import { IUser } from '../users/interfaces/user.interface';
 import { InjectModel } from '@nestjs/mongoose';
 import { debug } from 'console';
 import { RegistrationStatus } from './interfaces/registrationStatus.interface';
-import { UserSchema } from '../users/schemas/user.schema';
-import * as mongoose from 'mongoose';
-import { Model, PassportLocalModel } from 'mongoose';
 
 @Injectable()
 export class AuthService {
@@ -17,12 +15,12 @@ export class AuthService {
     private readonly usersService: UsersService,
     @InjectModel('User') private readonly userModel: PassportLocalModel<IUser>,
   ) {}
-  async register(user /*: CreateUserDto*/) {
+
+  async register(user) {
     let status: RegistrationStatus = {
       success: true,
       message: 'user register',
     };
-    //const newuser = new DefaultUser({username: 'user'});
     const user2 = new this.userModel({ username: user.email });
 
     for (let k of Object.keys(user)) {
@@ -40,6 +38,7 @@ export class AuthService {
         }
       },
     );
+
     return status;
   }
 
